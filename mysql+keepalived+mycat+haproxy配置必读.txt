@@ -1,0 +1,63 @@
+10.200.138.209 slave
+10.200.138.208 master
+ 
+ 前期准备 确保服务器之前的端口是通的
+ 确保yum命令和  unzip命令的安装
+ yum install unzip -y;
+ 
+ 
+ 
+ 第一步
+ /etc/ansible/hosts
+ 中配置需要部署安装的服务器ip
+第二步
+## 是否开启基于writeset的并行复制机制
+use_write_set: 1
+
+## master 和 slave 对应的IP
+master_ip: 10.200.138.208
+slave_ips:
+  - 10.200.138.209
+###---------------mysqlend--------------------
+###---------------mycat集群配置---------------------
+master_ip: "10.200.138.208"
+
+slave_ips:
+ - "10.200.138.209"
+schemas:
+ - "appdb"
+###-----------------mycatend---------------------------------
+##dongjstest
+jdk_package: jdk1.8.0_77.tar.z
+jdk_dir: /usr/local/mysqltools/deploy/packages/jdk/
+###haproxy
+haproxyauto_package: haproxy_setup-master.zip
+haproxyauto_dir: /usr/local/mysqltools/deploy/ansible/haproxy/common/
+mycat_1_name: mycat_209
+mycat_1_ip_port: 10.200.138.209:8066
+mycat_2_name: mycat_208
+mycat_2_ip_port: 10.200.138.208:8066
+###keepalived集群安装
+keepalived_vrrp: 209
+keepalived_vip: 192.168.57.180
+###master
+##path_dir
+keepalived_dir: /usr/local/mysqltools/deploy/ansible/keepalived/common/
+keepalived_package: keepalived-1.4.5.tar.gz
+keepalived_master: MASTER
+keepalived_master_ip:
+###数值越大，优先级越高 master150
+keepalived_master_priority: 150
+###slave
+keepalived_backup: BACKUP
+keepalived_slave_ip:
+keepalived_backup_priority: 120
+
+第三部
+信息配置
+keepalived 主从关系的 脚本需要配置  hosts 在 /etc/ansible/hosts
+确保每个 playbook都是指定的是 /etc/ansible/hosts 下的对象
+
+<writeHost host="master1" url="10.200.138.208:3306" user="appuser" password="mtls0352">
+
+

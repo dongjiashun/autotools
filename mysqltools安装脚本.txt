@@ -1,0 +1,8 @@
+!/bin/bash
+cd /usr/local/mysqltools/deploy/packages/python/
+bash install.sh
+source /etc/profile
+cd /usr/local/mysqltools/deploy/packages/ansible
+bash install.sh 
+mkdir -p /etc/ansible
+touch /etc/ansible/hosts
