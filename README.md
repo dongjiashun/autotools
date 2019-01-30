@@ -1,8 +1,12 @@
-此工具是基于https://github.com/Neeky/mysqltools 作者蒋乐兴 发布的工具后面做的扩展自动化工具
+此工具是基于https://github.com/Neeky/mysqltools 作者蒋乐兴 发布的工具后面，
+做的扩展自动化工具
 之后添加了我自身的一些高可用集群的自动化部署，
 大家想一个点，如果可以复现自己的操作。那么可以做到某种意义的过目不忘，那代表什么。。。自己想
 目前致力于把 数据库所有解决方案和文档 都实现到自动化中
 
+安装：
+          如果大家要安装https://github.com/Neeky/mysqltools去这边查看；
+	  数据库这边要深入扩展欢迎@我
 列如mysql+mycat+keepalived+haproxy组成的高可用集群 一键部署
 
 	  不仅仅是安装，个人觉得操作也可以复现
